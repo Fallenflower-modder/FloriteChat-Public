@@ -203,7 +203,7 @@ http://<你的公网IP>:8000/src/client/login.html
 {
     "api_key": "Input your API key here",
     "model_name": "Input your model name here",
-    "enabled": true,
+    "enabled": false,
     "api_base": "Input your API URL here"
 }
 ```
