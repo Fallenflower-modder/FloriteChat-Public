@@ -1,0 +1,10 @@
+passlib
+websockets
+asyncio
+json
+sqlite3
+logging
+os
+urllib3
+requests
+beautifulsoup4

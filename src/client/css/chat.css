@@ -1,0 +1,873 @@
+/* 聊天页面样式 */
+.chat-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 90vh;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 300px;
+    background: #f8f9fa;
+    border-right: 1px solid #e1e8ed;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info {
+    padding: 20px;
+    border-bottom: 1px solid #e1e8ed;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.status {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status.online::before {
+    background-color: #4caf50;
+}
+
+.status.offline::before {
+    background-color: #9e9e9e;
+}
+
+.logout-btn {
+    margin-left: auto;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 在线用户列表 */
+.online-users {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.online-users h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+#user-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#user-list li {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+#user-list li:hover {
+    background: #e9ecef;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.user-name {
+    font-size: 14px;
+    color: #333;
+}
+
+/* 主聊天区域 */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 20px;
+    border-bottom: 1px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+.chat-header h2 {
+    margin: 0;
+    color: #6a11cb;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+#room-info {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 聊天消息区域 */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 消息样式 */
+.message {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    position: relative;
+}
+
+.message.self {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.message.other {
+    align-self: flex-start;
+    background: #f1f1f1;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.message-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.message-sender {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.message-content {
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+/* 消息时间样式 */
+.message-time {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 4px;
+    display: block;
+    text-align: right;
+}
+
+/* 打字指示器样式 */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: #666;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+/* 打字动画 */
+@keyframes typing {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+        background-color: #4a9eff;
+    }
+}
+
+/* 流式消息样式 */
+.message.streaming .message-content {
+    min-height: 30px;
+}
+
+.streaming-content {
+    line-height: 1.5;
+}
+
+/* 确保流式消息完成后不影响布局 */
+.message[data-completed="true"] {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* 错误消息样式 */
+.error-message {
+    background-color: rgba(239, 83, 80, 0.1);
+    color: #e53935;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-left: 4px solid #e53935;
+    font-size: 14px;
+    text-align: center;
+}
+
+.error-message p {
+    margin: 0;
+}
+
+/* 系统消息 */
+.system-message {
+    align-self: center;
+    background: rgba(106, 17, 203, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #6a11cb;
+    margin: 10px 0;
+}
+
+/* 命令消息 */
+.command-message {
+    align-self: center;
+    background: rgba(37, 117, 252, 0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #2575fc;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* 热搜卡片样式 */
+.hot-search-card {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.hot-search-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.hot-search-avatar {
+    font-size: 20px;
+}
+
+.hot-search-user {
+    font-weight: bold;
+    color: #d68910;
+    font-size: 15px;
+}
+
+.hot-search-content {
+    line-height: 1.6;
+    color: #555;
+    padding-left: 5px;
+}
+
+.hot-search-content strong {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 电影消息卡片 */
+.movie-card {
+    align-self: center;
+    background: #f8f9fa;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 500px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.movie-card-sender {
+    font-weight: 600;
+    color: #6a11cb;
+}
+
+.movie-thumbnail {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 48px;
+}
+
+/* 输入区域 */
+.chat-input-container {
+    padding: 20px;
+    border-top: 1px solid #e1e8ed;
+    background: #f8f9fa;
+}
+
+.input-toolbar {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.toolbar-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.toolbar-btn:hover {
+    background: #e9ecef;
+}
+
+/* Emoji 选择器 */
+.emoji-picker {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    background: white;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 245px;
+    max-width: 90vw;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.emoji-picker.show {
+    display: grid;
+}
+
+.emoji-item {
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.emoji-item:hover {
+    background: #f1f1f1;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    position: relative;
+}
+
+#message-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e1e8ed;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+/* 指令列表样式 */
+.command-list {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+    z-index: 1000;
+}
+
+.command-list.show {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.command-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.command-item:last-child {
+    border-bottom: none;
+}
+
+.command-item:hover {
+    background-color: #f8f9fa;
+}
+
+.command-item .command-name {
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+.command-item .command-desc {
+    color: #666;
+    font-size: 13px;
+}
+
+#message-input:focus {
+    outline: none;
+    border-color: #6a11cb;
+}
+
+.send-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.send-btn:hover {
+    transform: translateY(-2px);
+}
+
+.send-btn:active {
+    transform: translateY(0);
+}
+
+.send-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 电影播放模态框 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.movie-player {
+    margin-top: 20px;
+}
+
+#movie-player {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .chat-container {
+        flex-direction: column;
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid #e1e8ed;
+    }
+    
+    .message {
+        max-width: 85%;
+    }
+    
+    .chat-messages {
+        padding: 15px;
+    }
+    
+    .chat-input-container {
+        padding: 15px;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* 天气卡片样式 - 新设计 */
+.weather-container {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+.weather-card {
+    background: #1e1e2e;
+    border-radius: 16px;
+    padding: 20px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.weather-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 卡片头部 */
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.weather-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.weather-status {
+    font-size: 1rem;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* 当前天气信息 */
+.current-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.current-temp {
+    font-size: 3.8rem;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1;
+}
+
+.current-info {
+    text-align: right;
+}
+
+.air-quality,
+.wind {
+    font-size: 0.9rem;
+    color: #cbd5e0;
+    margin-bottom: 8px;
+}
+
+/* 天气预报 - 6天预报布局 */
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.forecast-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.forecast-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.forecast-item {
+    flex: 0 0 auto;
+    width: calc(100% / 6 - 8px);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px 8px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.forecast-item.show {
+    opacity: 1;
+    transform: scale(1);
+    animation: fadeInScale 0.5s ease forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.forecast-date {
+    font-size: 0.9rem;
+    color: #cbd5e0;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.forecast-weather {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.forecast-temp {
+    font-size: 0.85rem;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .weather-container {
+        max-width: 100%;
+    }
+    
+    .weather-card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+    
+    .weather-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .current-temp {
+        font-size: 3rem;
+    }
+    
+    .forecast-item {
+        width: calc(100% / 3 - 8px);
+        padding: 10px 6px;
+    }
+}
+
+/* 优化消息容器中的天气卡片布局 */
+.message.command-message {
+    align-self: flex-start;
+    background: transparent;
+    padding: 0;
+    max-width: 100%;
+}
+
+.message.command-message .weather-container {
+    margin: 0;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* 确保天气卡片在聊天消息中正确显示 */
+.message-time {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+}

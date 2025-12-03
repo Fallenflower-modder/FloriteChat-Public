@@ -1,0 +1,6 @@
+{
+    "api_key": "Input your API key here",
+    "model_name": "Input your model name here",
+    "enabled": true,
+    "api_base": "Input your API URL here"
+}

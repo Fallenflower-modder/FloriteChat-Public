@@ -1,0 +1,5 @@
+2025-11-30 23:43:14,579 - INFO - 正在启动聊天服务器...
+2025-11-30 23:43:14,580 - INFO - 成功加载chatbot配置: C:\Users\ASUS\Documents\trae_projects\FloriteChat\src\server\chatbot-config.json
+2025-11-30 23:43:14,580 - INFO - 成功加载chatbot提示词: C:\Users\ASUS\Documents\trae_projects\FloriteChat\src\server\chatbot-tips.txt
+2025-11-30 23:43:14,588 - INFO - server listening on 0.0.0.0:8766
+2025-11-30 23:43:14,588 - INFO - WebSocket服务器已启动，监听端口8766，大模型对话功能状态: 已禁用

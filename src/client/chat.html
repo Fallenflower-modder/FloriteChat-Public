@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloriteChat - 聊天室</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- 侧边栏 - 用户信息和在线列表 -->
+        <div class="sidebar">
+            <div class="user-info">
+                <div class="avatar">
+                    <span id="user-avatar"></span>
+                </div>
+                <div class="info">
+                    <h3 id="user-nickname">用户昵称</h3>
+                    <p id="connection-status" class="status online">在线</p>
+                </div>
+                <button id="logout-btn" class="logout-btn">退出</button>
+            </div>
+            
+            <div class="online-users">
+                <h4>在线用户 (<span id="online-count">0</span>)</h4>
+                <ul id="user-list">
+                    <!-- 在线用户列表将通过JavaScript动态加载 -->
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 主聊天区域 -->
+        <div class="chat-main">
+            <div class="chat-header">
+                <h2>FloriteChat</h2>
+                <div class="header-actions">
+                    <span id="room-info">聊天室</span>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <!-- 聊天消息将通过JavaScript动态加载 -->
+                <div class="system-message">
+                    <p>欢迎来到FloriteChat聊天室！</p>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="input-toolbar">
+                    <button id="emoji-btn" class="toolbar-btn">😊</button>
+                    <div id="emoji-picker" class="emoji-picker">
+                        <!-- Emoji 表情将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="message-input" 
+                        placeholder="输入消息... 输入 @ 查看可用命令"
+                        autocomplete="off"
+                    >
+                    <button id="send-btn" class="send-btn">发送</button>
+                    <!-- 指令列表容器 -->
+                    <div id="command-list" class="command-list">
+                        <!-- 指令列表将通过JavaScript动态加载 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 电影播放模态框 -->
+        <div id="movie-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="movie-title">电影播放</h3>
+                <div class="movie-player">
+                    <iframe id="movie-player" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/chat.js"></script>
+    <div class="footer">
+        <p>Fallenflower , 2025</p>
+        <p><a href="https://github.com/Fallenflower-modder" target="_blank">Github</a> | Email | Discord</p>
+    </div>
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            z-index: 100;
+        }
+        .footer a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</body>
+</html>
